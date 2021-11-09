@@ -139,6 +139,7 @@ cython_debug/
 
 .deta
 
+*.db
 ## React
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.

@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-
+from ...database import create_session
 
 student_router = APIRouter(tags=["Students"], prefix="/students")
 
