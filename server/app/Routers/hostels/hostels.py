@@ -16,6 +16,7 @@ from .models import (
     RoomCreate,
     OwnerCreate,
     RoomCreateWithHostelId,
+    RoomReadWithHostelName,
 )
 from typing import List, Optional
 
@@ -28,7 +29,7 @@ async def common_dependencies(
     return {"session": session}
 
 
-@hostel_router.get("/rooms")
+@hostel_router.get("/rooms", response_model=List[RoomReadWithHostelName])
 async def get_rooms(
     limit: Optional[int] = 10,
     offset: Optional[int] = 0,
@@ -47,6 +48,7 @@ async def get_rooms(
     rooms = session.exec(statement).all()
     if not rooms:
         raise HTTPException(200, detail="No Rooms in the system")
+    print(rooms)
     return rooms
 
 
@@ -148,9 +150,10 @@ async def get_hostel(
 ):
     session = common["session"]
     hostel = session.get(Hostel, id)
-    if hostel:
-        return hostel
-    raise HTTPException(404, detail="Hostel Not found")
+    if not hostel:
+        raise HTTPException(404, detail="Hostel Not found")
+    print(hostel)
+    return hostel
 
 
 @hostel_router.post("/rooms", response_model=RoomRead)

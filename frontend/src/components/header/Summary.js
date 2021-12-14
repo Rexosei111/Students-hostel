@@ -5,7 +5,6 @@ import { Divider, Paper, Typography } from "@mui/material";
 const useStyles = makeStyles((theme) => ({
   container: {
     height: 120,
-    backgroundColor: "#ffffff",
     marginBottom: 10,
     display: "flex",
     alignItems: "center",

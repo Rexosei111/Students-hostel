@@ -3,11 +3,14 @@ import Homepage from "./pages/Home/homepage";
 import { makeStyles } from "@mui/styles";
 import { createTheme, ThemeProvider, useMediaQuery } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
+import Layout from "./Layout";
+import { Routes, Route, Link } from "react-router-dom";
+import Roompage from "./pages/Rooms/Roompage";
 
 // const useStyle = makeStyles({
 //   App: {},
 // });
-function App() {
+function App({ children }) {
   // const classes = useStyle();
 
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
@@ -24,7 +27,12 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Homepage />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Homepage />} />
+          <Route path="rooms" element={<Roompage />} />
+        </Route>
+      </Routes>
     </ThemeProvider>
   );
 }

@@ -5,25 +5,23 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import CardImage from "../../images/headerBg.jpg";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Stack from "@mui/material/Stack";
 
-const CardName = ({ hostel_name, room_number, total_rooms }) => {
+const CardName = ({ hostel_name, room_number }) => {
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-      }}
-    >
-      <Typography variant="h6">{hostel_name}</Typography>
-      <Typography variant="body1">
-        {room_number}{" "}
-        <Typography variant="body2" component="span">
-          out of
-        </Typography>{" "}
-        {total_rooms}
-      </Typography>
-    </div>
+    <Stack spacing={1}>
+      <Breadcrumbs separator="/" aria-label="breadcrumb">
+        <Typography gutterBottom variant="h6">
+          {hostel_name}
+        </Typography>
+        {room_number && (
+          <Typography gutterBottom variant="body1">
+            {room_number}
+          </Typography>
+        )}
+      </Breadcrumbs>
+    </Stack>
   );
 };
 
@@ -38,11 +36,7 @@ function RoomsCard({ room }) {
           alt="green iguana"
         />
         <CardContent>
-          <CardName
-            hostel_name={room.hostel.name}
-            room_number={room.room_number}
-            total_rooms={room.hostel.number_of_rooms}
-          />
+          <CardName hostel_name="Jebarge" room_number="1" />
           <Typography variant="body2" color="text.secondary">
             Lizards are a widespread group of squamate reptiles, with over 6,000
             species, ranging across all continents except Antarctica

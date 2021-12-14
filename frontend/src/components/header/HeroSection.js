@@ -2,6 +2,7 @@ import { Button, ButtonGroup, Container, Typography } from "@mui/material";
 import React from "react";
 import backgroundImage from "../../images/headerBg2.jpg";
 import Summary from "./Summary";
+import { Link } from "react-router-dom";
 
 function HeroSection() {
   return (
@@ -38,7 +39,11 @@ function HeroSection() {
           >
             Hostels
           </Button>
-          <Button sx={{ borderColor: "#122C39", color: "#ffffff" }}>
+          <Button
+            LinkComponent={Link}
+            to="/rooms"
+            sx={{ borderColor: "#122C39", color: "#ffffff" }}
+          >
             Rooms
           </Button>
         </ButtonGroup>

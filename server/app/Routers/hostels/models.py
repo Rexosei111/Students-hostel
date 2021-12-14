@@ -88,7 +88,12 @@ class RoomRead(BaseRoom):
 
 
 class RoomReadWithHostel(RoomRead):
-    hoste_id: int
+    hostel_id: int
+
+
+class RoomReadWithHostelName(RoomRead):
+    hostel_id: int
+    hostel: Optional[BaseHostel] = None
 
 
 class HostelReadWithRooms(HostelRead):

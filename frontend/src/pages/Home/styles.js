@@ -5,7 +5,7 @@ export default makeStyles({
     width: "100%",
     display: "flex",
     flexDirection: "column",
-    gap: 35,
+    gap: 25,
   },
   rooms: {
     width: "100%",
